@@ -1,0 +1,30 @@
+.user-badge-item {
+    display: inline-flex;
+    align-items: center;
+    background-color: #6b46c1; /* Purple */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin: 5px 5px 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .user-badge-item:hover {
+    background-color: #553c9a;
+  }
+  
+  .user-badge-name {
+    margin-right: 5px;
+  }
+  
+  .admin-label {
+    font-style: italic;
+    font-weight: 600;
+  }
+  
+  .close-icon {
+    font-size: 12px;
+  }
+  
