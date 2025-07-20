@@ -54,7 +54,12 @@ const MyChats = ({ fetchAgain }) => {
                 </p>
                 {chat.latestMessage && (
                   <p className="chat-message">
-                    <strong>{chat.latestMessage.sender.name}: </strong>
+                    <strong>
+                      {chat.latestMessage?.sender?.name
+                        ? `${chat.latestMessage.sender.name}: `
+                        : ""}
+                    </strong>
+
                     {chat.latestMessage.content.length > 50
                       ? chat.latestMessage.content.substring(0, 51) + "..."
                       : chat.latestMessage.content}
