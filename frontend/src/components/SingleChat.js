@@ -11,7 +11,7 @@ import { ChatState } from "../Context/ChatProvider";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -53,8 +53,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         `/api/message/${selectedChat._id}`,
         config
       );
-
-      // ✅ Mark messages as seen
       await axios.put(`/api/message/seen/${selectedChat._id}`, {}, config);
 
       setMessages(data);
@@ -118,6 +116,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   useEffect(() => {
+
     socket = io(ENDPOINT);
     socket.emit("setup", user);
     socket.on("connected", () => setSocketConnected(true));
@@ -141,7 +140,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           setFetchAgain((prev) => !prev);
         }
       } else {
-        // ✅ Mark as seen when new message received in open chat
         const config = {
           headers: { Authorization: `Bearer ${user.token}` },
         };
@@ -157,7 +155,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     });
   }, [notification, setNotification, fetchAgain, setFetchAgain]);
 
-  // ✅ NEW: Socket listener for message seen events
+  
   useEffect(() => {
     socket.on("message seen", ({ chatId, seenByUser }) => {
       if (selectedChat && selectedChat._id === chatId) {
