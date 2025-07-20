@@ -11,7 +11,7 @@ import { ChatState } from "../Context/ChatProvider";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 
-const ENDPOINT = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+const ENDPOINT = process.env.REACT_APP_BACKEND_URL || "https://chit-chat-levii.onrender.com";
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
