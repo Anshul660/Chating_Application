@@ -11,7 +11,7 @@ import { ChatState } from "../Context/ChatProvider";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 
-const ENDPOINT = "REACT_APP_API_URL";
+const ENDPOINT = process.env.REACT_APP_API_URL || "http://localhost:5000";
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
