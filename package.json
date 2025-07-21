@@ -1,15 +1,18 @@
 {
-  "name": "talk-a-tive",
+  "name": "Levii",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "Anshul Lodhi",
   "type": "commonjs",
+  
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "build": "npm install --legacy-peer-deps && npm install -legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
+ 
+ 
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
